@@ -11,16 +11,22 @@ namespace BikeHire.Models
     public class Hire
     {
         public int HireID { get; set; }
-        [Required(ErrorMessage = "Required field")]         //Not null or empty string
+        [Required]                                          //Not null or empty string
         public int BikeID { get; set; }                     //FK
+        [Required]
         public String FirstName { get; set; }
-        [Required(ErrorMessage = "Required field")]         //Not null or empty string
+        [Required]                                         
         public String Surname { get; set; }
-        [Required(ErrorMessage = "Required field")]         //Not null or empty string
+        [Required]
         public String Address { get; set; }
-        [Required(ErrorMessage = "Required field")]         //Not null or empty string
+        [Required]
+        [Display(Name = "Phone Number")]
         public String PhoneNumber { get; set; }
+        [Required]
+        [Display(Name = "Hire start date")]
         public DateTime StartDate { get; set; }
+        [Required]
+        [Display(Name = "Hire finish date")]
         public DateTime FinishDate { get; set; }
 
         //Navigation Property

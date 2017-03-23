@@ -11,10 +11,15 @@ namespace BikeHire.Models
     public class Bike
     {
         public int BikeID { get; set; }
+        [Required]
         public String Make { get; set; }
+        [Required]
         public String  Model { get; set; }
+        [Required]
+        [Display(Name = "Rental charge per day")]
         public double RentalChargePerDay { get; set; }
-
+        [Required]
+        [Display(Name = "Bike Available")]
         public bool BikeAvailable { get; set; }
 
 
