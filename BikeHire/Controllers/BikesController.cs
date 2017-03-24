@@ -16,7 +16,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
     public class BikesController : ApiController    //Colm: API Controller
     {
         private BikeHireContext db = new BikeHireContext();
-
+        
         // GET: api/Bikes
         public IList<BikeDetailsDto> GetBikes()     //Colm: Newely created, enabled due to creation of Models.BikeDetailsDto.cs
         {
@@ -29,13 +29,13 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
                 Hires = p.hires.ToList()
             }).ToList();
         }
-
-        /*Original code
+        /*
+        //Original code
         public IQueryable<Bike> GetBikes()
         {
             return db.Bikes;
-        }
-        */
+        }*/
+        
         
 
         // GET: api/Bikes/5

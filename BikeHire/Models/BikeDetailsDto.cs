@@ -13,6 +13,7 @@ namespace BikeHire.Models
         public bool BikeAvailable { get; set; }
         public List<Hire> Hires { get; set; }
 
+        //Method to Calculate Rental Cost
 
     }
 }

@@ -25,6 +25,7 @@ namespace BikeHire.Models
 
         //Navigation Property
         public ICollection<Hire> hires { get; set; }
+        //public virtual ICollection<Hire> hires { get; set; }      //using "virtual" causes and Circular References errors, used DTO
 
         /*  Here we are considering a One - Many relationship between Bike and Hires (Customers)
             Assumption that; 

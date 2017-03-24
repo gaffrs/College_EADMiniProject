@@ -12,8 +12,8 @@ namespace BikeHire.Migrations
                 c => new
                     {
                         BikeID = c.Int(nullable: false, identity: true),
-                        Make = c.String(),
-                        Model = c.String(),
+                        Make = c.String(nullable: false),
+                        Model = c.String(nullable: false),
                         RentalChargePerDay = c.Double(nullable: false),
                         BikeAvailable = c.Boolean(nullable: false),
                     })
@@ -25,7 +25,7 @@ namespace BikeHire.Migrations
                     {
                         HireID = c.Int(nullable: false, identity: true),
                         BikeID = c.Int(nullable: false),
-                        FirstName = c.String(),
+                        FirstName = c.String(nullable: false),
                         Surname = c.String(nullable: false),
                         Address = c.String(nullable: false),
                         PhoneNumber = c.String(nullable: false),

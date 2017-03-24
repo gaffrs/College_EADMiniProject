@@ -13,7 +13,7 @@ namespace BikeHire.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201703171544217_Initial"; }
+            get { return "201703240901338_Initial"; }
         }
         
         string IMigrationMetadata.Source
