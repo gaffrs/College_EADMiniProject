@@ -22,8 +22,8 @@ namespace BikeHire.Models
         public String Surname { get; set; }
         [Required]
         public String Address { get; set; }
-        
-		/*//Other Phone attribute option
+
+        /*//Other Phone attribute option
 		[Required(ErrorMessage = "Number must not be blank")] //Not null or empty string
         // string 10 characters long & no shorter than 10 characters
         [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]
@@ -31,18 +31,17 @@ namespace BikeHire.Models
         [Display(Name = "Phone Number")]             
         public String PhoneNumber { get; set; }
 		*/
-		
-		[Required]
+
+        [Required]
         [Phone]
         [Display(Name = "Phone Number")]
-		public String PhoneNumber { get; set; }
+        public String PhoneNumber { get; set; }
         [Required]
         [Display(Name = "Hire start date")]
         public DateTime StartDate { get; set; }
         [Required]
         [Display(Name = "Hire finish date")]
         public DateTime FinishDate { get; set; }
-        //public double HireCost { get; set; }
 
         //Navigation Property
         public Bike Bike { get; set; }
@@ -54,12 +53,30 @@ namespace BikeHire.Models
                 Hire (Customer) has 1 Bike
                 Bike has Many Hires (Customers) */
 
-
-        //Method
-        public virtual double HireCost()
+        //Property to Calculate Rental Days
+        [Display(Name = "Rental Days: ")]
+        public double RentalDays        //Read ONLY property    
         {
-            return ((FinishDate-StartDate).TotalDays)*Bike.RentalChargePerDay;
+            get
+            {
+                return ((FinishDate - StartDate).TotalDays);
+            }
         }
 
+
+
+
+
+        /*
+                //Property to Calculate Rental Cost
+                [Display(Name = "Rental Cost: € ")]
+                public double RentalCost        //Read ONLY property    
+                {
+                    get
+                    {
+                        return ((FinishDate - StartDate).TotalDays) * Bike.RentalChargePerDay;
+                    }
+                }
+        */
     }
 }

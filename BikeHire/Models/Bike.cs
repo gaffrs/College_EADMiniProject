@@ -10,7 +10,7 @@ namespace BikeHire.Models
 {
     public class Bike
     {
-        [Display(Name = "Bike ID" )]
+        [Display(Name = "Bike ID" )]            //Displayed so Shop can see BikeID to give out
         public int BikeID { get; set; }
         [Required]
         public String Make { get; set; }
@@ -32,5 +32,6 @@ namespace BikeHire.Models
             Assumption that; 
                 Hire (Customer) has 1 Bike
                 Bike has Many Hires (Customers) */
+
     }
 }

@@ -13,11 +13,11 @@ using BikeHire.Models;
 
 namespace BikeHire.Controllers                      //Colm: This manages all the Basic CRUD Operations
 {
-    public class BikesController : ApiController    //Colm: API Controller
+    public class BikesAPIController : ApiController     //Colm: API Controller
     {
         private BikeHireContext db = new BikeHireContext();
-        
-        // GET: api/Bikes
+
+        // GET: api/BikesAPI
         public IList<BikeDetailsDto> GetBikes()     //Colm: Newely created, enabled due to creation of Models.BikeDetailsDto.cs
         {
             return db.Bikes.Select(p => new BikeDetailsDto
@@ -28,7 +28,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
                 RentalChargePerDay = p.RentalChargePerDay,
                 BikeAvailable = p.BikeAvailable,
                 Hires = p.hires.ToList()
-                
+
             }).ToList();
         }
         /*
@@ -37,10 +37,8 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
         {
             return db.Bikes;
         }*/
-        
-        
 
-        // GET: api/Bikes/5
+        // GET: api/BikesAPI/5
         [ResponseType(typeof(Bike))]
         public async Task<IHttpActionResult> GetBike(int id)
         {
@@ -53,7 +51,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return Ok(bike);
         }
 
-        // PUT: api/Bikes/5
+        // PUT: api/BikesAPI/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBike(int id, Bike bike)
         {
@@ -88,7 +86,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Bikes
+        // POST: api/BikesAPI
         [ResponseType(typeof(Bike))]
         public async Task<IHttpActionResult> PostBike(Bike bike)
         {
@@ -103,7 +101,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return CreatedAtRoute("DefaultApi", new { id = bike.BikeID }, bike);
         }
 
-        // DELETE: api/Bikes/5
+        // DELETE: api/BikesAPI/5
         [ResponseType(typeof(Bike))]
         public async Task<IHttpActionResult> DeleteBike(int id)
         {

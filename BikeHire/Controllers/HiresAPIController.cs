@@ -11,22 +11,19 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BikeHire.Models;
 
-
 namespace BikeHire.Controllers                      //Colm: This manages all the Basic CRUD Operations
 {
-    public class HiresController : ApiController    //Colm: API Controller
+    public class HiresAPIController : ApiController //Colm: API Controller
     {
         private BikeHireContext db = new BikeHireContext();
 
-
-        // GET: api/Hires
+        // GET: api/HiresAPI
         public IQueryable<Hire> GetHires()
         {
             return db.Hires;
         }
- 
 
-        // GET: api/Hires/5
+        // GET: api/HiresAPI/5
         [ResponseType(typeof(Hire))]
         public async Task<IHttpActionResult> GetHire(int id)
         {
@@ -39,7 +36,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return Ok(hire);
         }
 
-        // PUT: api/Hires/5
+        // PUT: api/HiresAPI/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutHire(int id, Hire hire)
         {
@@ -74,7 +71,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Hires
+        // POST: api/HiresAPI
         [ResponseType(typeof(Hire))]
         public async Task<IHttpActionResult> PostHire(Hire hire)
         {
@@ -89,7 +86,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return CreatedAtRoute("DefaultApi", new { id = hire.HireID }, hire);
         }
 
-        // DELETE: api/Hires/5
+        // DELETE: api/HiresAPI/5
         [ResponseType(typeof(Hire))]
         public async Task<IHttpActionResult> DeleteHire(int id)
         {
