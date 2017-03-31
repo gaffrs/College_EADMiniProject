@@ -12,12 +12,12 @@ namespace BikeHire.Models
     {
         [Display(Name = "Bike ID" )]            //Displayed so Shop can see BikeID to give out
         public int BikeID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Required field")] //Not null or empty string
         public String Make { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Required field")]
         public String  Model { get; set; }
-        [Required]
-        [Display(Name = "Rental charge per day")]
+        [Required(ErrorMessage = "Required field")]
+        [Display(Name = "Rental (per day)")]
         public double RentalChargePerDay { get; set; }
         [Required]
         [Display(Name = "Bike Available")]

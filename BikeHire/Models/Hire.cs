@@ -14,13 +14,16 @@ namespace BikeHire.Models
         public int HireID { get; set; }
         [Required]                                          //Not null or empty string
         public int BikeID { get; set; }                     //FK
-        [Required]
+
+        [Required(ErrorMessage = "Required field")]
         [Display(Name = "First Name")]
         public String FirstName { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Required field")]
         [Display(Name = "Last Name")]
         public String Surname { get; set; }
-        [Required]
+
+        [Required(ErrorMessage = "Required field")]
         public String Address { get; set; }
 
         /*//Other Phone attribute option
