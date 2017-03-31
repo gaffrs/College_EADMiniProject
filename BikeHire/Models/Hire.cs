@@ -35,7 +35,7 @@ namespace BikeHire.Models
         public String PhoneNumber { get; set; }
 		*/
 
-        [Required]
+        [Required(ErrorMessage = "Required field")]
         [Phone]
         [Display(Name = "Phone Number")]
         public String PhoneNumber { get; set; }
@@ -59,12 +59,22 @@ namespace BikeHire.Models
                 Bike has Many Hires (Customers) */
 
         //Property to Calculate Rental Days
-        [Display(Name = "Rental Days: ")]
+        [Display(Name = "Rental Days ")]
         public double RentalDays        //Read ONLY property    
         {
             get
             {
                 return ((FinishDate - StartDate).TotalDays);
+            }
+        }
+        
+        //Property to Calculate Rental Cost
+        [Display(Name = "Rental Charge € ")]
+        public double RentalCharge        //Read ONLY property    
+        {
+            get
+            {
+                return RentalDays * Bike.RentalChargePerDay;
             }
         }
 
