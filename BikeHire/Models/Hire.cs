@@ -40,9 +40,11 @@ namespace BikeHire.Models
         [Display(Name = "Phone Number")]
         public String PhoneNumber { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Hire start date")]
         public DateTime StartDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Hire finish date")]
         public DateTime FinishDate { get; set; }
 
