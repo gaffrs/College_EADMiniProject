@@ -10,6 +10,7 @@ namespace BikeHire.Models
 {
     public class Bike
     {
+        [Display(Name = "Bike ID" )]
         public int BikeID { get; set; }
         [Required]
         public String Make { get; set; }

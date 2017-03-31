@@ -7,6 +7,7 @@ namespace BikeHire.Models
 {
     public class BikeDetailsDto                     //DTO(Data transfer Objects) class to get all data
     {
+        public int BikeID { get; set; }
         public String Make { get; set; }
         public String Model { get; set; }
         public double RentalChargePerDay { get; set; }

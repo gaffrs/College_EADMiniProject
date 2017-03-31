@@ -10,24 +10,39 @@ namespace BikeHire.Models
 {
     public class Hire
     {
+        [Display(Name = "Hire ID")]
         public int HireID { get; set; }
         [Required]                                          //Not null or empty string
         public int BikeID { get; set; }                     //FK
         [Required]
+        [Display(Name = "First Name")]
         public String FirstName { get; set; }
-        [Required]                                         
+        [Required]
+        [Display(Name = "Last Name")]
         public String Surname { get; set; }
         [Required]
         public String Address { get; set; }
-        [Required]
-        [Display(Name = "Phone Number")]
+        
+		/*//Other Phone attribute option
+		[Required(ErrorMessage = "Number must not be blank")] //Not null or empty string
+        // string 10 characters long & no shorter than 10 characters
+        [StringLength(10, MinimumLength = 10, ErrorMessage = "Number must be 10 digits long")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "Number must be 10 digits long")]
+        [Display(Name = "Phone Number")]             
         public String PhoneNumber { get; set; }
+		*/
+		
+		[Required]
+        [Phone]
+        [Display(Name = "Phone Number")]
+		public String PhoneNumber { get; set; }
         [Required]
         [Display(Name = "Hire start date")]
         public DateTime StartDate { get; set; }
         [Required]
         [Display(Name = "Hire finish date")]
         public DateTime FinishDate { get; set; }
+        //public double HireCost { get; set; }
 
         //Navigation Property
         public Bike Bike { get; set; }
@@ -38,6 +53,13 @@ namespace BikeHire.Models
             Assumption that; 
                 Hire (Customer) has 1 Bike
                 Bike has Many Hires (Customers) */
+
+
+        //Method
+        public virtual double HireCost()
+        {
+            return ((FinishDate-StartDate).TotalDays)*Bike.RentalChargePerDay;
+        }
 
     }
 }

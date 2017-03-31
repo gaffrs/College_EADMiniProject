@@ -11,17 +11,20 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BikeHire.Models;
 
+
 namespace BikeHire.Controllers                      //Colm: This manages all the Basic CRUD Operations
 {
     public class HiresController : ApiController    //Colm: API Controller
     {
         private BikeHireContext db = new BikeHireContext();
 
+
         // GET: api/Hires
         public IQueryable<Hire> GetHires()
         {
             return db.Hires;
         }
+ 
 
         // GET: api/Hires/5
         [ResponseType(typeof(Hire))]

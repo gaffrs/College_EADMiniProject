@@ -22,11 +22,13 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
         {
             return db.Bikes.Select(p => new BikeDetailsDto
             {
+                BikeID = p.BikeID,
                 Make = p.Make,
                 Model = p.Model,
                 RentalChargePerDay = p.RentalChargePerDay,
                 BikeAvailable = p.BikeAvailable,
                 Hires = p.hires.ToList()
+                
             }).ToList();
         }
         /*
