@@ -28,6 +28,9 @@
             @Html.DisplayNameFor(model => model.FinishDate)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Bike.BikeID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Bike.Make)
         </th>
         <th>
@@ -36,9 +39,10 @@
         <th>
             @Html.DisplayNameFor(model => model.RentalDays)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RentalCharge)
-        </th>
+@*    <th>
+         @Html.DisplayNameFor(model => model.RentalCharge)
+    </th>
+*@ 
         <th></th>
     </tr>
 
@@ -63,6 +67,9 @@
             @Html.DisplayFor(modelItem => item.FinishDate)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Bike.BikeID)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Bike.Make)
         </td>
         <td>
@@ -71,22 +78,23 @@
         <td>
             @Html.DisplayFor(modelItem => item.RentalDays)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalCharge)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HireID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HireID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HireID })
-        </td>
-    </tr>
-}
+        @*      <td>
+                      @Html.DisplayFor(modelItem => item.RentalCharge)
+                    </td>
+        *@
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id=item.HireID }) |
+                        @Html.ActionLink("Details", "Details", new { id=item.HireID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id=item.HireID })
+                    </td>
+                </tr>
+            }
 
-</table>
+            </table>
 
-<th>
-    <p>
-        @Html.ActionLink("Create new customer entry", "Create")
-    </p>
-</th>
+            <th>
+                <p>
+                    @Html.ActionLink("Create new customer entry", "Create")
+                </p>
+            </th>
 

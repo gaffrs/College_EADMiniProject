@@ -262,6 +262,7 @@
     <Compile Include="Models\BikeDetailsDto.cs" />
     <Compile Include="Models\BikeHireContext.cs" />
     <Compile Include="Models\Hire.cs" />
+    <Compile Include="Models\HireCalculations.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

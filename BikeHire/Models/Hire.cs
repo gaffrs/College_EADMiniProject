@@ -67,17 +67,28 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-        
+ /*  
         //Property to Calculate Rental Cost
         [Display(Name = "Rental Charge € ")]
         public double RentalCharge        //Read ONLY property    
         {
             get
             {
-                return RentalDays * Bike.RentalChargePerDay;
+
+                if (Bike.RentalChargePerDay != 0)
+                {
+                    return RentalDays * Bike.RentalChargePerDay;
+                }
+                else
+                {
+                    return Bike.RentalChargePerDay = 0;
+                }
+
             }
         }
 
+
+*/
 
 
 

@@ -1,18 +1,15 @@
 ﻿@model BikeHire.Models.Bike
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Edit bike";
 }
-
-<h2>Edit</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Bike</h4>
+        <h4>@ViewBag.title</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.BikeID)
@@ -60,7 +57,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Bike Listing", "Index")
 </div>
 
 @section Scripts {

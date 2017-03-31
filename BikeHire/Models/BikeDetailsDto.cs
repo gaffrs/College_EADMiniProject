@@ -17,16 +17,17 @@ namespace BikeHire.Models
         public bool BikeAvailable { get; set; }
         public List<Hire> Hires { get; set; }
 
-/*
-        //Property to Calculate Rental Cost
-        [Display(Name = "Rental Charge: € ")]
-        public double RentalCharge        //Read ONLY property    
-        {
-            get
-            {
-                return Hire.RentalDays * RentalChargePerDay;
-            }
-        }
-*/
+
+        /*
+                //Property to Calculate Rental Cost
+                [Display(Name = "Rental Charge: € ")]
+                public double RentalCharge        //Read ONLY property    
+                {
+                    get
+                    {
+                        return Hire.RentalDays * RentalChargePerDay;
+                    }
+                }
+        */
     }
 }
