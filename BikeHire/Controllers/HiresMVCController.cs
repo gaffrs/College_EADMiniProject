@@ -44,6 +44,8 @@ namespace BikeHire.Controllers
         public ActionResult Create()
         {
             ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
+            ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
+            ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
 
             //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", "Make", "Make", "Model", "Model"); //CG:ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
             //ViewBag.BikeID = new SelectList(db.Bikes, "Make", "Make");
@@ -86,7 +88,7 @@ namespace BikeHire.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make", hire.BikeID);
+            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", hire.BikeID);
             return View(hire);
         }
 
@@ -103,7 +105,7 @@ namespace BikeHire.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make", hire.BikeID);
+            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", hire.BikeID);
             return View(hire);
         }
 

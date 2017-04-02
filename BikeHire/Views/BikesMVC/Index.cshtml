@@ -15,6 +15,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.BikeID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Make)
         </th>
         <th>
@@ -31,6 +34,9 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.BikeID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Make)
         </td>
