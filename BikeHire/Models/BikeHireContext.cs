@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
@@ -22,5 +23,15 @@ namespace BikeHire.Models
         public System.Data.Entity.DbSet<BikeHire.Models.Bike> Bikes { get; set; }
 
         public System.Data.Entity.DbSet<BikeHire.Models.Hire> Hires { get; set; }
+
+
+        //Uncomment below and recreate tables....to Specify singular table names
+        /*
+         * protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+        */
+
     }
 }

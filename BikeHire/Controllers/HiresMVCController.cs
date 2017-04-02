@@ -9,6 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using BikeHire.Models;
 
+//System.Web.UI.WebControls.DropDownList 
+using System.Data.Entity.Infrastructure; 
+
 namespace BikeHire.Controllers
 {
     public class HiresMVCController : Controller
@@ -40,7 +43,16 @@ namespace BikeHire.Controllers
         // GET: HiresMVC/Create
         public ActionResult Create()
         {
-            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
+            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
+
+            //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", "Make", "Make", "Model", "Model"); //CG:ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
+            //ViewBag.BikeID = new SelectList(db.Bikes, "Make", "Make");
+            //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
+            //ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
+            //ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
+            //ViewBag.BikeID.Model = new SelectList;
+            //new SelectList(db.Bikes, "Make");
+            //new SelectList (db.Bikes, "Model");
             return View();
         }
 
@@ -49,7 +61,7 @@ namespace BikeHire.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "HireID,BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire)
+        public async Task<ActionResult> Create([Bind(Include = "BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire) //CG: Removed HireID from list
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +70,7 @@ namespace BikeHire.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make", hire.BikeID);
+            ViewBag.BikeID = new SelectList(db.Bikes, "Make", "Model", hire.BikeID); //CG:(db.Bikes, "BikeID", "Make", hire.BikeID); //CG: (db.Bikes, "Make", "Model", hire.BikeID)
             return View(hire);
         }
 
@@ -83,7 +95,7 @@ namespace BikeHire.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "HireID,BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire)
+        public async Task<ActionResult> Edit([Bind(Include = "BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire)
         {
             if (ModelState.IsValid)
             {

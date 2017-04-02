@@ -47,7 +47,7 @@ namespace BikeHire.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "BikeID,Make,Model,RentalChargePerDay,BikeAvailable")] Bike bike)
+        public async Task<ActionResult> Create([Bind(Include = "Make,Model,RentalChargePerDay,BikeAvailable")] Bike bike) //CG: Removed BikeID from list
         {
             if (ModelState.IsValid)
             {
