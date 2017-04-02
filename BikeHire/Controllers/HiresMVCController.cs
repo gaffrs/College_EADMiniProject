@@ -97,7 +97,7 @@ namespace BikeHire.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire)
+        public async Task<ActionResult> Edit([Bind(Include = "HireID,BikeID,FirstName,Surname,Address,PhoneNumber,StartDate,FinishDate")] Hire hire)
         {
             if (ModelState.IsValid)
             {
