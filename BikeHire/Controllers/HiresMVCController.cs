@@ -44,9 +44,8 @@ namespace BikeHire.Controllers
         public ActionResult Create()
         {
             ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
-            ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
-            ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
-
+            //ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
+            //ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
             //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", "Make", "Make", "Model", "Model"); //CG:ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
             //ViewBag.BikeID = new SelectList(db.Bikes, "Make", "Make");
             //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
