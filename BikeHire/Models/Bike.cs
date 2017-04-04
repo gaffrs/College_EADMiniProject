@@ -25,7 +25,9 @@ namespace BikeHire.Models
 
 
         //Navigation Property
-        public ICollection<Hire> hires { get; set; }
+        public List<Hire> hires { get; set; } 
+        //public virtual List<Hire> hires { get; set; }   //CG: New 04/04/17
+        //public ICollection<Hire> hires { get; set; }
         //public virtual ICollection<Hire> hires { get; set; }      //using "virtual" causes and Circular References errors, used DTO
 
         /*  Here we are considering a One - Many relationship between Bike and Hires (Customers)
@@ -33,5 +35,7 @@ namespace BikeHire.Models
                 Hire (Customer) has 1 Bike
                 Bike has Many Hires (Customers) */
 
+        //Property to Calculate Rental Cost     //CG: New 04/04/17
+        
     }
 }

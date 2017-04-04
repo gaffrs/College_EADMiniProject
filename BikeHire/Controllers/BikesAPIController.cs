@@ -19,6 +19,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
 
         // GET: api/BikesAPI
         public IList<BikeDetailsDto> GetBikes()     //Colm: Newely created, enabled due to creation of Models.BikeDetailsDto.cs
+
         {
             return db.Bikes.Select(p => new BikeDetailsDto
             {
@@ -29,17 +30,21 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
                 BikeAvailable = p.BikeAvailable,
                 Hires = p.hires.ToList()
 
-            }).ToList();
-        }
-        /*
-        //Original code
-        public IQueryable<Bike> GetBikes()
-        {
-            return db.Bikes;
-        }*/
 
-        // GET: api/BikesAPI/5
-        [ResponseType(typeof(Bike))]
+            }).ToList();
+
+        }
+
+
+    /*
+    //Original code
+    public IQueryable<Bike> GetBikes()
+    {
+        return db.Bikes;
+    }*/
+
+    // GET: api/BikesAPI/5
+    [ResponseType(typeof(Bike))]
         public async Task<IHttpActionResult> GetBike(int id)
         {
             Bike bike = await db.Bikes.FindAsync(id);
