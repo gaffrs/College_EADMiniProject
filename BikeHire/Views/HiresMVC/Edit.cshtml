@@ -70,6 +70,33 @@
             </div>
         </div>
 
+
+@* CG: *****Extra section to display the results on the same page*******@
+@* CG: @if(IsPost) => To have data ONLY returned after the Post*@
+@*
+        @if (IsPost)
+                        {
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RentalDays, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.RentalDays)
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.RentalCost, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DisplayFor(model => model.RentalCost)
+
+                </div>
+            </div>
+    }
+    
+    *@
+
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-default" />

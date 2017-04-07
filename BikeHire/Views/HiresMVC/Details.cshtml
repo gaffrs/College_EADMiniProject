@@ -55,9 +55,25 @@
         <dd>
             @Html.DisplayFor(model => model.FinishDate)
         </dd>
+@*
+        <dt>
+            @Html.DisplayNameFor(model => model.RentalDays)
+        </dt>
+        <dd>
+        @Html.DisplayFor(model => model.RentalDays)
+    </dd>
+
+     <dt>
+        @Html.DisplayNameFor(model => model.RentalCost)
+    </dt>
+    <dd>
+        @Html.DisplayFor(model => model.RentalCost)
+    </dd>
+*@
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.HireID }) |
     @Html.ActionLink("Customer List", "Index")
 </p>
+

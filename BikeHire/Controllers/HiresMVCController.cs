@@ -90,7 +90,7 @@ namespace BikeHire.Controllers
             ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", hire.BikeID);
             return View(hire);
         }
-
+//Removed to try and post edits to the same page
         // POST: HiresMVC/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.

@@ -47,6 +47,7 @@ namespace BikeHire.Models
         [DisplayFormat(DataFormatString = "{0:d}", ApplyFormatInEditMode = true)]
         [Display(Name = "Hire finish date")]
         public DateTime FinishDate { get; set; }
+        public double RentalChargePerDay = 10;
 
         //Navigation Property
         public Bike Bike { get; set; }
@@ -68,19 +69,16 @@ namespace BikeHire.Models
             }
         }
 
-        /*
         //Property to Calculate Rental Cost     //CG: Not working
         [Display(Name = "Rental Cost € ")]
         public double RentalCost
         {
-            
             get
             {
                 return (RentalDays * Bike.RentalChargePerDay);
             }
-
         }  
-        */
+      
         
 
         /*

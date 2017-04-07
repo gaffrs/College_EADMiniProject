@@ -16,7 +16,7 @@ namespace BikeHire
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "BikesAPI", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "BikesMVC", action = "Index", id = UrlParameter.Optional }
             );
         }
     }

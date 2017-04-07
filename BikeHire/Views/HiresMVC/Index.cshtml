@@ -45,10 +45,12 @@
         <th>
             @Html.DisplayNameFor(model => model.RentalDays)
         </th>
-@*    <th>
-         @Html.DisplayNameFor(model => model.RentalCharge)
+    @*
+        <th>
+         @Html.DisplayNameFor(model => model.RentalCost)
     </th>
-*@ 
+        *@
+
         <th></th>
     </tr>
 
@@ -84,10 +86,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.RentalDays)
         </td>
-        @*      <td>
-                      @Html.DisplayFor(modelItem => item.RentalCharge)
-                    </td>
-        *@
+
+        <td>
+            @Html.DisplayFor(modelItem => item.RentalCost)
+        </td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.HireID }) |
                         @Html.ActionLink("Details", "Details", new { id=item.HireID }) |
