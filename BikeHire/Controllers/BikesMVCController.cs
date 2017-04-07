@@ -38,18 +38,28 @@ namespace BikeHire.Controllers
             return View(bikes.ToList());
         }
 
-/*
-         //CG: 07/04/17 Original colde before Filtering
-        // GET: BikesMVC
-        public async Task<ActionResult> Index()
-        {
-            return View(await db.Bikes.ToListAsync());
-        }
+
+        /*
+                 //CG: 07/04/17 Original colde before Filtering
+                // GET: BikesMVC
+                public async Task<ActionResult> Index()
+                {
+                    return View(await db.Bikes.ToListAsync());
+                }
+
+
+        */
+
+
         
-*/
-        // GET: BikesMVC/Details/5
-        public async Task<ActionResult> Details(int? id)
+           
+        
+
+
+// GET: BikesMVC/Details/5
+public async Task<ActionResult> Details(int? id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -75,6 +85,7 @@ namespace BikeHire.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "Make,Model,RentalChargePerDay,BikeAvailable")] Bike bike) //CG: Removed BikeID from list
         {
+
             if (ModelState.IsValid)
             {
                 db.Bikes.Add(bike);

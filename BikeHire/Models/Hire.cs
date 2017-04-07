@@ -58,6 +58,7 @@ namespace BikeHire.Models
                 Hire (Customer) has 1 Bike
                 Bike has Many Hires (Customers) */
 
+       
         //Property to Calculate Rental Days
         [Display(Name = "Rental Days ")]
         public double RentalDays        //Read ONLY property    
@@ -67,7 +68,8 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-/*
+                
+
         //Property to Calculate Rental Cost     //CG: Not working
         [Display(Name = "Rental Cost € ")]
         public double RentalCost
@@ -77,8 +79,9 @@ namespace BikeHire.Models
                 return (RentalDays * Bike.RentalChargePerDay);
             }
         }  
-        
-*/
+
+
+
         /*
                 //Property to Calculate Rental Cost
                 [Display(Name = "Rental Cost: € ")]
