@@ -19,11 +19,47 @@ namespace BikeHire.Controllers
         private BikeHireContext db = new BikeHireContext();
 
         // GET: HiresMVC
+        public ActionResult Index(string sortOrder)
+        {
+
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "firstname_ascending" : "lastname_ascending";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "startdate_desc" : "";
+
+            var hires = from s in db.Hires
+                        select s;
+            switch (sortOrder)
+            {
+                case "firstname_ascending":
+                    hires = hires.OrderBy(s => s.FirstName);
+                    break;
+                case "lastname_ascending":
+                    hires = hires.OrderBy(s => s.Surname);
+                    break;
+                case "startdate_desc":
+                    hires = hires.OrderBy(s => s.StartDate);
+                    break;
+                default:
+                    hires = hires.OrderBy(s => s.BikeID);
+                    break;
+            }
+            return View(hires.ToList());
+        }
+
+
+
+
+
+
+/*
+         //CG: 07/04/17 Original colde before Filtering
+
+        // GET: HiresMVC
         public async Task<ActionResult> Index()
         {
             var hires = db.Hires.Include(h => h.Bike);
             return View(await hires.ToListAsync());
         }
+*/
 
         // GET: HiresMVC/Details/5
         public async Task<ActionResult> Details(int? id)

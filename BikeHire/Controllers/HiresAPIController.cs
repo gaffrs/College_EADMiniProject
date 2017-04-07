@@ -17,24 +17,73 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
     {
         private BikeHireContext db = new BikeHireContext();
 
+
+
         // GET: api/HiresAPI
-        public IQueryable<Hire> GetHires()
+        public List<HireDetailsDto> GetHires()
         {
-            return db.Hires;
+            var hireList = db.Hires.ToList();
+            return hireList.Select(s => new HireDetailsDto
+            {
+                HireID = s.HireID,
+                BikeID = s.BikeID,
+                FirstName = s.FirstName,
+                Surname = s.Surname,
+                Address = s.Address,
+                PhoneNumber = s.PhoneNumber,
+                StartDate = s.StartDate,
+                FinishDate = s.FinishDate
+            }).ToList();
         }
 
+        /*
+                // GET: api/HiresAPI
+                public IQueryable<Hire> GetHires()
+                {
+                    return db.Hires;
+                }
+        */
+
         // GET: api/HiresAPI/5
-        [ResponseType(typeof(Hire))]
+        [ResponseType(typeof(HireDetailsDto))]
         public async Task<IHttpActionResult> GetHire(int id)
         {
-            Hire hire = await db.Hires.FindAsync(id);
-            if (hire == null)
+            var hireList = await db.Hires.Include(p => p.HireID).Select(s => new HireDetailsDto()
+            {
+                HireID = s.HireID,
+                BikeID = s.BikeID,
+                FirstName = s.FirstName,
+                Surname = s.Surname,
+                Address = s.Address,
+                PhoneNumber = s.PhoneNumber,
+                StartDate = s.StartDate,
+                FinishDate = s.FinishDate
+            }).SingleOrDefaultAsync(p => p.HireID == id);
+
+            if (hireList == null)
             {
                 return NotFound();
             }
 
-            return Ok(hire);
+            return Ok(hireList);
         }
+
+        //Original code
+        /*
+                // GET: api/HiresAPI/5
+                [ResponseType(typeof(Hire))]
+                public async Task<IHttpActionResult> GetHire(int id)
+                {
+                    Hire hire = await db.Hires.FindAsync(id);
+                    if (hire == null)
+                    {
+                        return NotFound();
+                    }
+
+                    return Ok(hire);
+                }
+        */
+
 
         // PUT: api/HiresAPI/5
         [ResponseType(typeof(void))]
@@ -80,11 +129,44 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
                 return BadRequest(ModelState);
             }
 
+            //db.Entry(hire).Reference(p => p.HireID).Load();
+
             db.Hires.Add(hire);
             await db.SaveChangesAsync();
 
+            //new code
+            var dto = new HireDetailsDto()
+            {
+                HireID = hire.HireID,
+                FirstName = hire.FirstName,
+                Surname = hire.Surname,
+                Address = hire.Address,
+                PhoneNumber = hire.PhoneNumber,
+                StartDate = hire.StartDate,
+                FinishDate = hire.FinishDate
+
+            };
             return CreatedAtRoute("DefaultApi", new { id = hire.HireID }, hire);
+
         }
+
+        //Original Code
+        /*
+                // POST: api/HiresAPI
+                [ResponseType(typeof(Hire))]
+                public async Task<IHttpActionResult> PostHire(Hire hire)
+                {
+                    if (!ModelState.IsValid)
+                    {
+                        return BadRequest(ModelState);
+                    }
+
+                    db.Hires.Add(hire);
+                    await db.SaveChangesAsync();
+
+                    return CreatedAtRoute("DefaultApi", new { id = hire.HireID }, hire);
+                }
+        */
 
         // DELETE: api/HiresAPI/5
         [ResponseType(typeof(Hire))]

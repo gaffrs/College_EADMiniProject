@@ -14,13 +14,21 @@
 
 <table class="table">
     <tr>
-
+        @*New for sorting*@
+        <th>
+            @Html.ActionLink("FirstName", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Surname", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+@*
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Surname)
         </th>
+*@
         <th>
             @Html.DisplayNameFor(model => model.Address)
         </th>
@@ -28,8 +36,13 @@
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.ActionLink("StartDate", "Index", new { sortOrder = ViewBag.NameSortParm })
         </th>
+@*
+    <th>
+        @Html.DisplayNameFor(model => model.StartDate)
+    </th>
+*@
         <th>
             @Html.DisplayNameFor(model => model.FinishDate)
         </th>
@@ -45,11 +58,11 @@
         <th>
             @Html.DisplayNameFor(model => model.RentalDays)
         </th>
+        @*
         <th>
-         @Html.DisplayNameFor(model => model.RentalCost)
+            @Html.DisplayNameFor(model => model.RentalCost)
         </th>
-
-
+            *@
         <th></th>
     </tr>
 
@@ -85,10 +98,15 @@
         <td>
             @Html.DisplayFor(modelItem => item.RentalDays)
         </td>
+ 
+        @*
 
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalCost)
-        </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.RentalCost)
+    </td>
+        *@     
+
+
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id=item.HireID }) |
                         @Html.ActionLink("Details", "Details", new { id=item.HireID }) |

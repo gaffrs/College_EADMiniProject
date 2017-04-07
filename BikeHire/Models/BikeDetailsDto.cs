@@ -16,6 +16,6 @@ namespace BikeHire.Models
         public String Model { get; set; }
         public double RentalChargePerDay { get; set; }
         public bool BikeAvailable { get; set; }
-        public List<Hire> Hires { get; set; }
+        public List<HireDetailsDto> Hires { get; set; }     //CG 07/04 Hire
     }
 }

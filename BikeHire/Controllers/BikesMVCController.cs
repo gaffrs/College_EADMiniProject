@@ -16,11 +16,37 @@ namespace BikeHire.Controllers
         private BikeHireContext db = new BikeHireContext();
 
         // GET: BikesMVC
+        public ActionResult Index(string sortOrder)
+        {
+
+        ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "make_ascending" : "model_ascending";
+
+            var bikes = from s in db.Bikes
+                    select s;
+        switch (sortOrder)
+            {
+                case "make_ascending":
+                    bikes = bikes.OrderBy(s => s.Make);
+                    break;
+                case "model_ascending":
+                    bikes = bikes.OrderBy(s => s.Model);
+                    break;
+                default:
+                    bikes = bikes.OrderBy(s => s.BikeID);
+                    break;
+            }
+            return View(bikes.ToList());
+        }
+
+/*
+         //CG: 07/04/17 Original colde before Filtering
+        // GET: BikesMVC
         public async Task<ActionResult> Index()
         {
             return View(await db.Bikes.ToListAsync());
         }
-
+        
+*/
         // GET: BikesMVC/Details/5
         public async Task<ActionResult> Details(int? id)
         {

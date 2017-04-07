@@ -21,42 +21,75 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
         public IList<BikeDetailsDto> GetBikes()     //Colm: Newely created, enabled due to creation of Models.BikeDetailsDto.cs
 
         {
-            return db.Bikes.Select(p => new BikeDetailsDto
+            var bikeList = db.Bikes.ToList();
+            return bikeList.Select(p => new BikeDetailsDto
             {
                 BikeID = p.BikeID,
                 Make = p.Make,
                 Model = p.Model,
                 RentalChargePerDay = p.RentalChargePerDay,
                 BikeAvailable = p.BikeAvailable,
-                Hires = p.hires.ToList()
-
-
+                Hires = p.hires.Select(s => new HireDetailsDto
+                {
+                    HireID = s.HireID,
+                    BikeID = s.BikeID,
+                    FirstName = s.FirstName,
+                    Surname = s.Surname,
+                    Address = s.Address,
+                    PhoneNumber = s.PhoneNumber,
+                    StartDate = s.StartDate,
+                    FinishDate = s.FinishDate
+                    }).ToList()
             }).ToList();
+         }
 
-        }
 
+        /*
+        //Original code
+        // GET: api/BikesAPI
+        public IQueryable<Bike> GetBikes()
+        {
+            return db.Bikes;
+        }*/
 
-    /*
-    //Original code
-    public IQueryable<Bike> GetBikes()
-    {
-        return db.Bikes;
-    }*/
-
-    // GET: api/BikesAPI/5
-    [ResponseType(typeof(Bike))]
+        // GET: api/BikesAPI/5
+        [ResponseType(typeof(BikeDetailsDto))]
         public async Task<IHttpActionResult> GetBike(int id)
         {
-            Bike bike = await db.Bikes.FindAsync(id);
-            if (bike == null)
+            var bikeList = await db.Bikes.Include(p => p.BikeID).Select(s => new BikeDetailsDto()
             {
-                return NotFound();
+                BikeID = s.BikeID,
+                Make = s.Make,
+                Model = s.Model,
+                RentalChargePerDay = s.RentalChargePerDay,
+                BikeAvailable = s.BikeAvailable
+            }).SingleOrDefaultAsync(p => p.BikeID == id);
+
+                if (bikeList == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok(bikeList);
             }
 
-            return Ok(bike);
-        }
+        //Original code
+        /*
+                // GET: api/BikesAPI/5
+                [ResponseType(typeof(Bike))]
+                public async Task<IHttpActionResult> GetBike(int id)
+                {
+                    Bike bike = await db.Bikes.FindAsync(id);
+                    if (bike == null)
+                    {
+                        return NotFound();
+                    }
 
-        // PUT: api/BikesAPI/5
+                    return Ok(bike);
+                }
+        */
+
+            // PUT: api/BikesAPI/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutBike(int id, Bike bike)
         {
@@ -91,6 +124,36 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+
+        // POST: api/BikesAPI
+        [ResponseType(typeof(Bike))]
+        public async Task<IHttpActionResult> PostBike(Bike bike)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            db.Bikes.Add(bike);
+            await db.SaveChangesAsync();
+
+            //db.Entry(bike).Reference(p => p.BikeID).Load();
+
+            //new code
+            var dto = new BikeDetailsDto()
+            {
+                BikeID = bike.BikeID,
+                Make = bike.Make,
+                Model = bike.Model,
+                RentalChargePerDay = bike.RentalChargePerDay,
+                BikeAvailable = bike.BikeAvailable
+            };
+
+            return CreatedAtRoute("DefaultApi", new { id = bike.BikeID }, dto);
+        }
+
+        //Original Code
+        /*
         // POST: api/BikesAPI
         [ResponseType(typeof(Bike))]
         public async Task<IHttpActionResult> PostBike(Bike bike)
@@ -105,6 +168,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
 
             return CreatedAtRoute("DefaultApi", new { id = bike.BikeID }, bike);
         }
+        */
 
         // DELETE: api/BikesAPI/5
         [ResponseType(typeof(Bike))]
@@ -137,3 +201,4 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
         }
     }
 }
+ 

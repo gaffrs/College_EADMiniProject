@@ -49,8 +49,8 @@ namespace BikeHire.Models
         public DateTime FinishDate { get; set; }
 
         //Navigation Property
-        public Bike Bike { get; set; }
-        //public virtual Bike Bike { get; set; }        //using "virtual" causes and Circular References errors, used DTO
+        //public Bike Bike { get; set; }
+        public virtual Bike Bike { get; set; }        //using "virtual" causes and Circular References errors, used DTO
 
 
         /*  Here we are considering a One - Many relationship between Bike and Hires (Customers)
@@ -67,7 +67,7 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-
+/*
         //Property to Calculate Rental Cost     //CG: Not working
         [Display(Name = "Rental Cost € ")]
         public double RentalCost
@@ -77,9 +77,8 @@ namespace BikeHire.Models
                 return (RentalDays * Bike.RentalChargePerDay);
             }
         }  
-      
         
-
+*/
         /*
                 //Property to Calculate Rental Cost
                 [Display(Name = "Rental Cost: € ")]

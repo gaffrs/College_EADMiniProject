@@ -6,55 +6,98 @@
 
 <h4>@ViewBag.title</h4>
 
-<th>
+@*CG: 07/04/17 New Filtering code*@
+
+
+@*
     <p>
-        @Html.ActionLink("Create new bike entry", "Create")
+        @Html.ActionLink("Create New", "Create")
     </p>
-</th>
+    <table>
+        <tr>
+            <th>
+                @Html.ActionLink("BikeID", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            @*<th>
+         @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParm })
+     </th>
+     <th>
+         @Html.ActionLink("RentalChargePerDay", "Index", new { sortOrder = ViewBag.NameSortParm })
+     </th>
+     <th>
+         @Html.ActionLink("BikeAvailable", "Index", new { sortOrder = ViewBag.NameSortParm })
+     </th>
+    <th>
+         @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
+     </th>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.BikeID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Make)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Model)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RentalChargePerDay)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BikeAvailable)
-        </th>
-<th></th>
-    </tr>
+            <th></th>
+        </tr>
+*@
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BikeID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Make)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Model)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RentalChargePerDay)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BikeAvailable)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.BikeID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.BikeID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.BikeID })
-        </td>
-    </tr>
-}
+
+    <th>
+        <p>
+            @Html.ActionLink("Create new bike entry", "Create")
+        </p>
+    </th>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.BikeID)
+            </th>
+            @*New for sorting*@
+            <th>
+                @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParm })
+            </th>
+@*
+            <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+*@
+            <th>
+                @Html.DisplayNameFor(model => model.RentalChargePerDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BikeAvailable)
+            </th>
+    <th></th>
+        </tr>
+    
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BikeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Make)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentalChargePerDay)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BikeAvailable)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BikeID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BikeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.BikeID })
+            </td>
+        </tr>
+    }
 </table>
 

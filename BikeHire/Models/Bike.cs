@@ -25,8 +25,8 @@ namespace BikeHire.Models
 
 
         //Navigation Property
-        public List<Hire> hires { get; set; } 
-        //public virtual List<Hire> hires { get; set; }   //CG: New 04/04/17
+        //public List<Hire> hires { get; set; } 
+        public virtual List<Hire> hires { get; set; }   //CG: New 04/04/17
         //public ICollection<Hire> hires { get; set; }
         //public virtual ICollection<Hire> hires { get; set; }      //using "virtual" causes and Circular References errors, used DTO
 
