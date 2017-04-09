@@ -8,42 +8,20 @@
 
 @*CG: 07/04/17 New Filtering code*@
 
-
-@*
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table>
-        <tr>
-            <th>
-                @Html.ActionLink("BikeID", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            <th>
-                @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParm })
-            </th>
-            @*<th>
-         @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParm })
-     </th>
-     <th>
-         @Html.ActionLink("RentalChargePerDay", "Index", new { sortOrder = ViewBag.NameSortParm })
-     </th>
-     <th>
-         @Html.ActionLink("BikeAvailable", "Index", new { sortOrder = ViewBag.NameSortParm })
-     </th>
-    <th>
-         @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm })
-     </th>
-
-            <th></th>
-        </tr>
-*@
-
-
     <th>
         <p>
             @Html.ActionLink("Create new bike entry", "Create")
         </p>
     </th>
+
+@*Add a Search Box to the Hire View*@
+@using (Html.BeginForm())
+{
+    <p>
+        Find by Make or Model: @Html.TextBox("SearchString")
+        <input type="submit" value="Search" />
+    </p>
+}
 
     <table class="table">
         <tr>
@@ -52,10 +30,10 @@
             </th>
             @*New for sorting*@
             <th>
-                @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Make", "Index", new { sortOrder = ViewBag.NameSortParmMake })
             </th>
             <th>
-                @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParm })
+                @Html.ActionLink("Model", "Index", new { sortOrder = ViewBag.NameSortParmModel })
             </th>
 @*
             <th>

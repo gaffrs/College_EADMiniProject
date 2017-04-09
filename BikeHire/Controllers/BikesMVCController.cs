@@ -16,14 +16,21 @@ namespace BikeHire.Controllers
         private BikeHireContext db = new BikeHireContext();
 
         // GET: BikesMVC
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
-
-        ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "make_ascending" : "model_ascending";
+        //Add Filtering
+        ViewBag.NameSortParmMake = String.IsNullOrEmpty(sortOrder) ? "make_ascending" : "";
+        ViewBag.NameSortParmModel = String.IsNullOrEmpty(sortOrder) ? "model_ascending" : "";
 
             var bikes = from s in db.Bikes
                     select s;
-        switch (sortOrder)
+                    //Add a Search Box to the Hire View  (Search by First or Surname)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                bikes = bikes.Where(s => s.Make.ToUpper().Contains(searchString.ToUpper())
+                                            ||
+                                         s.Model.ToUpper().Contains(searchString.ToUpper())); ;
+            }switch (sortOrder)
             {
                 case "make_ascending":
                     bikes = bikes.OrderBy(s => s.Make);
@@ -51,13 +58,8 @@ namespace BikeHire.Controllers
         */
 
 
-        
-           
-        
-
-
-// GET: BikesMVC/Details/5
-public async Task<ActionResult> Details(int? id)
+        // GET: BikesMVC/Details/5
+        public async Task<ActionResult> Details(int? id)
         {
 
             if (id == null)

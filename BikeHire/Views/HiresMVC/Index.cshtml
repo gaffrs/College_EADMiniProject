@@ -12,14 +12,23 @@
     </p>
 </th>
 
+@*Add a Search Box to the Hire View*@
+@using (Html.BeginForm())
+{
+    <p>
+        Find by First of Last name: @Html.TextBox("SearchString")
+        <input type="submit" value="Search"/>
+    </p>
+}
+
 <table class="table">
     <tr>
         @*New for sorting*@
         <th>
-            @Html.ActionLink("FirstName", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("FirstName", "Index", new { sortOrder = ViewBag.NameSortParmFirstName })
         </th>
         <th>
-            @Html.ActionLink("Surname", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Surname", "Index", new { sortOrder = ViewBag.NameSortParmLastName })
         </th>
 @*
         <th>
@@ -36,7 +45,7 @@
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </th>
         <th>
-            @Html.ActionLink("StartDate", "Index", new { sortOrder = ViewBag.NameSortParm })
+            @Html.ActionLink("Hire start date", "Index", new { sortOrder = ViewBag.NameSortParmStartDate })
         </th>
 @*
     <th>
@@ -58,11 +67,14 @@
         <th>
             @Html.DisplayNameFor(model => model.RentalDays)
         </th>
-
         <th>
-            @Html.DisplayNameFor(model => model.RentalCost)
+            @Html.DisplayName("Rental Cost")
         </th>
-
+@*
+    <th>
+        @Html.DisplayNameFor(model => model.RentalCost)
+    </th>
+*@
         <th></th>
     </tr>
 
@@ -99,9 +111,33 @@
             @Html.DisplayFor(modelItem => item.RentalDays)
         </td>
 
+
+@*Rental Cost calculated within the View*@        
+@*
+    <td>
+        @Html.DisplayFor(modelItem => item.RentalDays) * @Html.DisplayFor(modelItem => item.Bike.RentalChargePerDay)
+    </td> 
+*@   
+
+@*
+    <td>
+        @Html.DisplayFor(string.Format("{0}-{1}", item.RentalDays, item.Bike.RentalChargePerDay))
+    </td>
+*@       
+ @*
+    <td>
+        @Html.DisplayFor(model => model..RentalDays) * @Html.DisplayFor(modelItem => item.Bike.RentalChargePerDay)
+    </td >
+
+    @Html.DisplayFor(model => model.Requirement.prc_Customers.CustomerCode)  -  @Html.DisplayFor(model => model.Requirement.prc_Customers.CustDesc)
+*@ 
+        @*@Html.Display(item.RentalDays * item.Bike.RentalChargePerDay)*@
+
+@*
     <td>
         @Html.DisplayFor(modelItem => item.RentalCost)
     </td>
+*@
 
 
 

@@ -19,14 +19,23 @@ namespace BikeHire.Controllers
         private BikeHireContext db = new BikeHireContext();
 
         // GET: HiresMVC
-        public ActionResult Index(string sortOrder)
+        public ActionResult Index(string sortOrder, string searchString)
         {
-
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "firstname_ascending" : "lastname_ascending";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "startdate_desc" : "";
+//Add Filtering
+            ViewBag.NameSortParmFirstName = String.IsNullOrEmpty(sortOrder) ? "firstname_ascending" : "";
+            ViewBag.NameSortParmLastName = String.IsNullOrEmpty(sortOrder) ? "lastname_ascending" : "";
+            ViewBag.DateSortParmStartDate = sortOrder == "Date" ? "startdate_desc" : "";
 
             var hires = from s in db.Hires
                         select s;
+//Add a Search Box to the Hire View  (Search by First or Surname)
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                hires = hires.Where(s => s.Surname.ToUpper().Contains(searchString.ToUpper())
+                                            ||
+                                         s.FirstName.ToUpper().Contains(searchString.ToUpper()));                    ;
+            }
+
             switch (sortOrder)
             {
                 case "firstname_ascending":
@@ -35,8 +44,11 @@ namespace BikeHire.Controllers
                 case "lastname_ascending":
                     hires = hires.OrderBy(s => s.Surname);
                     break;
-                case "startdate_desc":
+                /*case "Date":
                     hires = hires.OrderBy(s => s.StartDate);
+                    break;*/
+                case "startdate_desc":
+                    hires = hires.OrderByDescending(s => s.StartDate);
                     break;
                 default:
                     hires = hires.OrderBy(s => s.BikeID);

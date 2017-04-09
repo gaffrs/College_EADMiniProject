@@ -18,7 +18,7 @@ namespace BikeHire.Models
 
         public BikeDetailsDto Bikes { get; set; }
 
-        /*
+
         //NEW
         public double RentalDays        //Read ONLY property    
         {
@@ -27,7 +27,7 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-
+/*
         public double RentalCost
         {
             get
