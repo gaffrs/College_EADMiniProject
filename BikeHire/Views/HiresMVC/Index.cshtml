@@ -1,4 +1,5 @@
-﻿@model IEnumerable<BikeHire.Models.Hire>
+﻿
+@model IEnumerable<BikeHire.Models.Hire>
 
 @{
     ViewBag.Title = "Customer listing";
@@ -47,6 +48,7 @@
         <th>
             @Html.ActionLink("Hire start date", "Index", new { sortOrder = ViewBag.NameSortParmStartDate })
         </th>
+
 @*
     <th>
         @Html.DisplayNameFor(model => model.StartDate)
@@ -67,10 +69,10 @@
         <th>
             @Html.DisplayNameFor(model => model.RentalDays)
         </th>
+@*
         <th>
             @Html.DisplayName("Rental Cost")
         </th>
-@*
     <th>
         @Html.DisplayNameFor(model => model.RentalCost)
     </th>
@@ -110,27 +112,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.RentalDays)
         </td>
-
-
+@*
+        <td>
+            @Html.DisplayFor(modelItem => item.RentalCost)
+        </td>
+*@
 @*Rental Cost calculated within the View*@        
 @*
     <td>
         @Html.DisplayFor(modelItem => item.RentalDays) * @Html.DisplayFor(modelItem => item.Bike.RentalChargePerDay)
     </td> 
 *@   
-
-@*
-    <td>
-        @Html.DisplayFor(string.Format("{0}-{1}", item.RentalDays, item.Bike.RentalChargePerDay))
-    </td>
-*@       
- @*
-    <td>
-        @Html.DisplayFor(model => model..RentalDays) * @Html.DisplayFor(modelItem => item.Bike.RentalChargePerDay)
-    </td >
-
-    @Html.DisplayFor(model => model.Requirement.prc_Customers.CustomerCode)  -  @Html.DisplayFor(model => model.Requirement.prc_Customers.CustDesc)
-*@ 
+ 
         @*@Html.Display(item.RentalDays * item.Bike.RentalChargePerDay)*@
 
 @*

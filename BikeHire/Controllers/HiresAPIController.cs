@@ -17,8 +17,6 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
     {
         private BikeHireContext db = new BikeHireContext();
 
-
-
         // GET: api/HiresAPI
         public List<HireDetailsDto> GetHires()
         {
@@ -36,7 +34,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
             }).ToList();
         }
 
-        /*
+        /*      //Original code
                 // GET: api/HiresAPI
                 public IQueryable<Hire> GetHires()
                 {

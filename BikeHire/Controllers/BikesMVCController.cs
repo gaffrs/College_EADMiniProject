@@ -45,16 +45,13 @@ namespace BikeHire.Controllers
             return View(bikes.ToList());
         }
 
-
         /*
-                 //CG: 07/04/17 Original colde before Filtering
+                //CG: 07/04/17 Original colde before Filtering
                 // GET: BikesMVC
                 public async Task<ActionResult> Index()
                 {
                     return View(await db.Bikes.ToListAsync());
                 }
-
-
         */
 
 

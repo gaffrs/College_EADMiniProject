@@ -14,12 +14,12 @@ namespace BikeHire.Models
         public String Address { get; set; }
         public String PhoneNumber { get; set; }
         public DateTime StartDate { get; set; }
+        
         public DateTime FinishDate { get; set; }
 
         public BikeDetailsDto Bikes { get; set; }
 
-/*
-        //NEW
+
         public double RentalDays        //Read ONLY property    
         {
             get
@@ -27,7 +27,9 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-*/
+       /* 
+        public double RentalCost { get; set; }
+        */
 /*
         public double RentalCost
         {
@@ -35,6 +37,7 @@ namespace BikeHire.Models
             {
                 return (RentalDays * Bikes.RentalChargePerDay);
             }
+
         }
         */
     }

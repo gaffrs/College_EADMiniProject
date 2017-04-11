@@ -44,23 +44,18 @@ namespace BikeHire.Controllers
                 case "lastname_ascending":
                     hires = hires.OrderBy(s => s.Surname);
                     break;
-                /*case "Date":
-                    hires = hires.OrderBy(s => s.StartDate);
-                    break;*/
                 case "startdate_desc":
                     hires = hires.OrderByDescending(s => s.StartDate);
                     break;
                 default:
-                    hires = hires.OrderBy(s => s.BikeID);
+                    hires = hires.OrderBy(s => s.HireID);
                     break;
             }
-            return View(hires.ToList());
+
+
+                     //Original code before doing Rental Calculation
+                     return View(hires.ToList());
         }
-
-
-
-
-
 
 /*
          //CG: 07/04/17 Original colde before Filtering
@@ -91,17 +86,8 @@ namespace BikeHire.Controllers
         // GET: HiresMVC/Create
         public ActionResult Create()
         {
-            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
-            //ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
-            //ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
-            //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID", "Make", "Make", "Model", "Model"); //CG:ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
-            //ViewBag.BikeID = new SelectList(db.Bikes, "Make", "Make");
-            //ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");
-            //ViewBag.BikeIDMake = new SelectList(db.Bikes, "BikeID", "Make");
-            //ViewBag.BikeIDModel = new SelectList(db.Bikes, "BikeID", "Model");
-            //ViewBag.BikeID.Model = new SelectList;
-            //new SelectList(db.Bikes, "Make");
-            //new SelectList (db.Bikes, "Model");
+            ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "BikeID");   
+            //CG:ViewBag.BikeID = new SelectList(db.Bikes, "BikeID", "Make");
             return View();
         }
 

@@ -77,21 +77,6 @@ namespace BikeHireUnitTest
         }
 
         /*
-                [TestMethod]
-                [ExpectedException(typeof(ArgumentException))]
-                public void HireFields1()
-                {
-                    // arrange 
-                    Hire b = new Hire();
-                    // act 
-                    b.FirstName = "";
-                    b.Surname = "";
-                    // assert
-
-                }
-                */
-
-        /*
                 [TestMethod()]
                 [ExpectedException(typeof(ValidationAttribute))]
                 public void FieldsCorrect()
@@ -110,32 +95,6 @@ namespace BikeHireUnitTest
 
                 }
                 */
-
-        /*
-                [TestMethod]
-                [ExpectedException(typeof(ValidationException), "Required field")]
-                [ExpectedException(typeof(ArgumentException),
-
-                public void FieldsCorrect()
-                {
-                    // arrange 
-                    Hire b = new Hire();
-                    b.FirstName = "";
-                    b.Surname = "";
-                    b.Address = "";
-                    b.PhoneNumber = "";
-                    // act 
-                    // assert
-                    AssertFailedException.Equals("required")
-
-                    MyAssert.Throws<NullReferenceException>(() => testStr.ToUpper());
-
-
-
-                }
-            }
-
-            }*/
 
     }
 }

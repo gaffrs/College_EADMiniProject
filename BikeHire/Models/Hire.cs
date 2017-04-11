@@ -59,6 +59,7 @@ namespace BikeHire.Models
                 Bike has Many Hires (Customers) */
 
     
+	     //Put into HireDetailsDto
         //Property to Calculate Rental Days
         [Display(Name = "Rental Days ")]
         public double RentalDays        //Read ONLY property    
@@ -68,6 +69,7 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
+		
        
 
         /*
