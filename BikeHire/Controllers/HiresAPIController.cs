@@ -120,7 +120,7 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
 
         // POST: api/HiresAPI
         [ResponseType(typeof(Hire))]
-        public async Task<IHttpActionResult> PostHire(Hire hire)
+        public async Task<IHttpActionResult> PostHire(Hire hires)
         {
             if (!ModelState.IsValid)
             {
@@ -129,22 +129,22 @@ namespace BikeHire.Controllers                      //Colm: This manages all the
 
             //db.Entry(hire).Reference(p => p.HireID).Load();
 
-            db.Hires.Add(hire);
+            db.Hires.Add(hires);
             await db.SaveChangesAsync();
 
             //new code
             var dto = new HireDetailsDto()
             {
-                HireID = hire.HireID,
-                FirstName = hire.FirstName,
-                Surname = hire.Surname,
-                Address = hire.Address,
-                PhoneNumber = hire.PhoneNumber,
-                StartDate = hire.StartDate,
-                FinishDate = hire.FinishDate
+                HireID = hires.HireID,
+                FirstName = hires.FirstName,
+                Surname = hires.Surname,
+                Address = hires.Address,
+                PhoneNumber = hires.PhoneNumber,
+                StartDate = hires.StartDate,
+                FinishDate = hires.FinishDate
 
             };
-            return CreatedAtRoute("DefaultApi", new { id = hire.HireID }, hire);
+            return CreatedAtRoute("DefaultApi", new { id = hires.HireID }, hires);
 
         }
 
