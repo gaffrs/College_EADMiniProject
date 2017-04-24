@@ -17,7 +17,7 @@ namespace BikeHire.Models
         [Required(ErrorMessage = "Required field")]
         public String  Model { get; set; }
         [Required(ErrorMessage = "Required field")]
-        [Display(Name = "Rental (per day)")]
+        [Display(Name = "Rental € (per day)")]
         public double RentalChargePerDay { get; set; }
         [Required]
         [Display(Name = "Bike Available")]
