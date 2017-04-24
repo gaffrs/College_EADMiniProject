@@ -27,9 +27,7 @@ namespace BikeHire.Models
                 return ((FinishDate - StartDate).TotalDays);
             }
         }
-       /* 
-        public double RentalCost { get; set; }
-        */
+
 /*
         public double RentalCost
         {
@@ -37,8 +35,7 @@ namespace BikeHire.Models
             {
                 return (RentalDays * Bikes.RentalChargePerDay);
             }
-
         }
-        */
+*/
     }
 }

@@ -75,26 +75,5 @@ namespace BikeHireUnitTest
             Assert.AreEqual(b.BikeAvailable, (false));
 
         }
-
-        /*
-                [TestMethod()]
-                [ExpectedException(typeof(ValidationAttribute))]
-                public void FieldsCorrect()
-
-                {
-                    // arrange 
-                    Hire b = new Hire();
-                    b.FirstName = "";
-                    b.Surname = "";
-                    b.Address = "";
-                    b.PhoneNumber = "";
-                    // act 
-                    // assert
-                    //Assert.
-                    //Assert.Equals("required")
-
-                }
-                */
-
     }
 }
