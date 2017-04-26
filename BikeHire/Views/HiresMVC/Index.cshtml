@@ -71,8 +71,11 @@
         </th>
 @*
         <th>
-            @Html.DisplayNameFor(model => model.RentalCost)
+            @Html.DisplayName("Rental Cost")
         </th>
+    <th>
+        @Html.DisplayNameFor(model => model.RentalCost)
+    </th>
 *@
         <th></th>
     </tr>
@@ -122,12 +125,6 @@
 *@   
  
         @*@Html.Display(item.RentalDays * item.Bike.RentalChargePerDay)*@
-
-@*
-    <td>
-        @Html.DisplayFor(modelItem => item.RentalCost)
-    </td>
-*@
 
 
 
