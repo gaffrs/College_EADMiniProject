@@ -24,7 +24,10 @@ namespace BikeHire.Controllers
 //Add Filtering
             ViewBag.NameSortParmFirstName = String.IsNullOrEmpty(sortOrder) ? "firstname_ascending" : "";
             ViewBag.NameSortParmLastName = String.IsNullOrEmpty(sortOrder) ? "lastname_ascending" : "";
-            ViewBag.DateSortParmStartDate = sortOrder == "Date" ? "startdate_desc" : "";
+            ViewBag.DateSortParmStartDate = sortOrder == "Date" ? "date_desc" : "Date";
+
+
+
 
             var hires = from s in db.Hires
                         select s;
@@ -44,7 +47,7 @@ namespace BikeHire.Controllers
                 case "lastname_ascending":
                     hires = hires.OrderBy(s => s.Surname);
                     break;
-                case "startdate_desc":
+                case "date_desc":
                     hires = hires.OrderByDescending(s => s.StartDate);
                     break;
                 default:
